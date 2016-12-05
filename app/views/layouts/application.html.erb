@@ -8,21 +8,7 @@
 	  <%= render 'layouts/shim'%>
 
     
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
-    <!-- Theme CSS -->
-    <link href="css/agency.min.css" rel="stylesheet">
-
-	</head>
-		<body>
-		<div id="wrapper">
-			
-			
+   
 		<div id="page-wrapper" class="gray-bg">
     <div class="row border-bottom">
   
@@ -30,14 +16,11 @@
 			<%= render 'layouts/header'%>
 
 			<div class="container">
-			    <p class="notice"><%= notice %></p>
-	       	    <p class="alert"><%= alert %></p>
-
-
-	       	    <%= yield :sidebar %>
-				<%= yield %>
-				<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-				<%= render 'layouts/footer'%>
+			<% flash.each do |message_type, message| %>
+				<div class="alert alert-<%= message_type %>"><%= message %></div>
+			<% end %>
+			
+				<%= debug(params) if Rails.env.development? %>
 			</div>
 		</div>
 
